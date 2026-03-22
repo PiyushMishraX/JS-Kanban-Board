@@ -114,3 +114,14 @@ section .task-column .task{
 
 }
 
+section .task-column .task button{
+    /* align-items: flex-end; */
+    align-self: flex-end;
+    cursor: pointer;
+    padding: var(--padding-s) var(--padding-m);
+    border-radius: var(--border-radius-s);
+    border: none;
+    outline: none;
+}
+
+
