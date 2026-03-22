@@ -18,6 +18,7 @@ html{
 :root{
     --bg-color: #000000;
     --bg-button-color: #1a1a1a;
+    --bg-task-color: #2a2a2a;
     --primary-text-color: #ffffff;
 
     /* padding variables */
@@ -90,6 +91,10 @@ section .task-column{
     background-color: var(--bg-button-color);
     flex-grow: 1;
     padding: var(--padding-m);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-m);
 }
 
 section .task-column .heading{
@@ -97,5 +102,15 @@ section .task-column .heading{
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+section .task-column .task{
+    background-color: var(--bg-task-color);
+    padding: var(--padding-m);
+    border-radius: var(--border-radius-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-s);
 
 }
+
