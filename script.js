@@ -3,6 +3,7 @@ let tasksData = {}
 const todo = document.querySelector("#todo");
 const progress = document.querySelector("#progress");
 const done = document.querySelector("#done");
+const columns = [todo, progress, done];
 let dragElement = null;
 
 if(localStorage.getItem("tasks") || 0){
@@ -133,7 +134,7 @@ function addDragEventsOnColumn(column){
         //     // the count is selected from that column which is being called through drop event listner of column being changed // you are using col.querysel no document.querysel
         // }
 
-        const columns = [todo, progress, done];
+        // const columns = [todo, progress, done];
         columns.forEach(col=>{
                 const tasks = col.querySelectorAll(".task");
                 const count = col.querySelector(".right");
@@ -207,7 +208,7 @@ addTaskButton.addEventListener("click", ()=>{
 
     todo.appendChild(div);// new task drag ebent listenre mai nahi hai
 
-    const columns = [todo, progress, done];
+    // const columns = [todo, progress, done];
     columns.forEach(col=>{
             const tasks = col.querySelectorAll(".task");
             const count = col.querySelector(".right");
