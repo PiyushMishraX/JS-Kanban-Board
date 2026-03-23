@@ -15,13 +15,52 @@ tasks.forEach(task => {
 });
 
 // this effect is also used to add and remove highlights in elements in a website
-progress.addEventListener("dragenter", (e)=>{
-    // console.log("dragenter");
-    progress.classList.add("hover-over");
+// progress.addEventListener("dragenter", (e)=>{
+//     // console.log("dragenter");
+//     progress.classList.add("hover-over");
     
-})
+// })
 
-progress.addEventListener("dragleave", (e)=>{
-    progress.classList.remove("hover-over");
+// progress.addEventListener("dragleave", (e)=>{
+//     progress.classList.remove("hover-over");
 
-})
+// })
+
+// todo.addEventListener("dragenter", (e)=>{
+//     // console.log("dragenter");
+//     todo.classList.add("hover-over");
+    
+// })
+
+// todo.addEventListener("dragleave", (e)=>{
+//     todo.classList.remove("hover-over");
+
+// })
+
+// done.addEventListener("dragenter", (e)=>{
+//     // console.log("dragenter");
+//     done.classList.add("hover-over");
+    
+// })
+
+// done.addEventListener("dragleave", (e)=>{
+//     done.classList.remove("hover-over");
+
+// })
+
+//  ABove code is veryh repetitive
+
+function addDragEventsOnColuumn(column){
+    column.addEventListener("dragenter", (e)=>{
+        e.preventDefault();
+        column.classList.add("hover-over");
+    })
+    column.addEventListener("dragleave", (e)=>{
+        e.preventDefault();
+        column.classList.remove("hover-over");
+    })
+}
+
+addDragEventsOnColuumn(todo);
+addDragEventsOnColuumn(progress);
+addDragEventsOnColuumn(done);
