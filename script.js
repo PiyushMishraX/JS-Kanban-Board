@@ -9,7 +9,7 @@ if(localStorage.getItem("tasks") || 0){
 
     const data = JSON.parse(localStorage.getItem("tasks"));
 
-    console.log(data); // tasks unstringified
+    // console.log(data); // tasks unstringified
 
     // for in works bcz data is an object
     for(const col in data){ // col - todo , progress , done
@@ -19,7 +19,22 @@ if(localStorage.getItem("tasks") || 0){
 
         // each coumn is array
         data[col].forEach(task=>{
-            
+            const div = document.createElement("div");
+
+            div.classList.add("task")
+            div.setAttribute("draggable","true")
+    
+            div.innerHTML = `
+                <h2>${taskTItle}</h2>
+                <p>${taskDesc}</p>
+                <button>Delete</button>
+            `;
+
+            column.appendChild(div);
+            div.addEventListener("drag",(e)=>{
+                dragElement = div;
+            })
+
         }) 
 
     }
