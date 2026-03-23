@@ -134,7 +134,9 @@ addTaskButton.addEventListener("click", ()=>{
 
     todo.appendChild(div);// new task drag ebent listenre mai nahi hai
 
-    
+    div.addEventListener("drag",(e)=>{
+        dragElement = div;
+    })
 
 
     modal.classList.remove("active"); 
