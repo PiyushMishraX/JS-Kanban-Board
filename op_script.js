@@ -130,5 +130,7 @@ addTaskButton.addEventListener("click", ()=>{
 
     updateTaskCount();
 
+    
+
     modal.classList.remove("active"); 
 })

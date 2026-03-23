@@ -91,6 +91,10 @@ section .task-column{
 
     background-color: var(--bg-button-color);
     flex-grow: 1;
+
+    /* each block takes 100% space of width it can have - before they srink just take senough space so elemetns will show using justify-content , the bigger item take up more space  */
+    width: 100%; 
+
     padding: var(--padding-m);
 
     display: flex;
