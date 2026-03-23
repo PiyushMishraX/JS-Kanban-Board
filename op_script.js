@@ -130,7 +130,8 @@ addTaskButton.addEventListener("click", ()=>{
 
     updateTaskCount();
 
-    
+    document.querySelector("#task-title-input").value = "";
+    document.querySelector("#task-desc-input").value = ""; // used it bcz taskTitle and taskDesc in const 
 
     modal.classList.remove("active"); 
 })
