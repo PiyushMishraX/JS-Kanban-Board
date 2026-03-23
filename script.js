@@ -5,6 +5,26 @@ const progress = document.querySelector("#progress");
 const done = document.querySelector("#done");
 let dragElement = null;
 
+if(localStorage.getItem("tasks") || 0){
+
+    const data = JSON.parse(localStorage.getItem("tasks"));
+
+    console.log(data); // tasks unstringified
+
+    // for in works bcz data is an object
+    for(const col in data){ // col - todo , progress , done
+
+        // console.log(col,data[col]); 
+        const column = document.querySelector(`${col}`);
+
+        // each coumn is array
+        data[col].forEach(task=>{
+            
+        }) 
+
+    }
+}
+
 // console.log(todo , progress, done)
 
 // drag highlight
