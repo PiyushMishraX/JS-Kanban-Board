@@ -123,7 +123,17 @@ function addDragEventsOnColumn(column){
             const tasks = col.querySelectorAll(".task");
             const count = col.querySelector(".right");
             // the count is selected from that column which is being called through drop event listner of column being changed
-            count.innerText = tasks.length; 
+
+            tasksData[col.id] =Array.from(tasks).map(t=>{ 
+                return { // return map function
+                    title: t.querySelector("h2").innerText, 
+                    desc: t.querySelector("p").innerText,
+                }
+            })
+
+            localStorage.setItem("tasks", JSON.stringify(tasksData));
+
+            count.innerText = tasks.length
         })
 
 
