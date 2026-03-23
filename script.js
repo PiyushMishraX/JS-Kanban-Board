@@ -51,7 +51,7 @@ tasks.forEach(task => {
 
 //  Above code is veryh repetitive
 
-function addDragEventsOnColuumn(column){
+function addDragEventsOnColumn(column){
     column.addEventListener("dragenter", (e)=>{
         e.preventDefault();
         column.classList.add("hover-over");
@@ -81,13 +81,22 @@ function addDragEventsOnColuumn(column){
         column.classList.remove("hover-over");
 
 
+        // count logic
+        [todo, progress, done].forEach(col=>{
+            const tasks = col.querySelectorAll(".task");
+            const count = col.querySelector(".right");
+            // the count is selected from that column which is being called through drop event listner of column being changed
+            count.innerText = tasks.length; 
+        })
+
+
 
     })
 }
 
-addDragEventsOnColuumn(todo);
-addDragEventsOnColuumn(progress);
-addDragEventsOnColuumn(done);
+addDragEventsOnColumn(todo);
+addDragEventsOnColumn(progress);
+addDragEventsOnColumn(done);
 
 
 /* MODAL  */
@@ -133,6 +142,13 @@ addTaskButton.addEventListener("click", ()=>{
     `;
 
     todo.appendChild(div);// new task drag ebent listenre mai nahi hai
+
+    [todo, progress, done].forEach(col=>{
+            const tasks = col.querySelectorAll(".task");
+            const count = col.querySelector(".right");
+            // the count is selected from that column which is being called through drop event listner of column being changed
+            count.innerText = tasks.length; 
+        })
 
     div.addEventListener("drag",(e)=>{
         dragElement = div;
