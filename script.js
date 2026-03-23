@@ -15,7 +15,8 @@ if(localStorage.getItem("tasks") || 0){
     for(const col in data){ // col - todo , progress , done
 
         // console.log(col,data[col]); 
-        const column = document.querySelector(`${col}`);
+        // const column = document.querySelector(`${col}`);
+        const column = document.querySelector(`#${col}`);
 
         // each coumn is array
         data[col].forEach(task=>{
@@ -25,17 +26,23 @@ if(localStorage.getItem("tasks") || 0){
             div.setAttribute("draggable","true")
     
             div.innerHTML = `
-                <h2>${taskTItle}</h2>
-                <p>${taskDesc}</p>
+                <h2>${task.title}</h2>
+                <p>${task.desc}</p>
                 <button>Delete</button>
             `;
 
             column.appendChild(div);
+
             div.addEventListener("drag",(e)=>{
                 dragElement = div;
             })
 
         }) 
+        const  tasks = column.querySelectorAll(".task")
+        const count = column.querySelector(".right");
+        count.innerText = tasks.length;
+
+
 
     }
 }
@@ -119,23 +126,33 @@ function addDragEventsOnColumn(column){
 
 
         // count logic
-        [todo, progress, done].forEach(col=>{
-            const tasks = col.querySelectorAll(".task");
-            const count = col.querySelector(".right");
-            // the count is selected from that column which is being called through drop event listner of column being changed
 
-            tasksData[col.id] =Array.from(tasks).map(t=>{ 
-                return { // return map function
-                    title: t.querySelector("h2").innerText, 
-                    desc: t.querySelector("p").innerText,
-                }
-            })
+        // columns.forEach(col=>{
+        //     const tasks = col.querySelectorAll(".task");
+        //     const count = col.querySelector(".right");
+        //     // the count is selected from that column which is being called through drop event listner of column being changed // you are using col.querysel no document.querysel
+        // }
 
-            localStorage.setItem("tasks", JSON.stringify(tasksData));
+        const columns = [todo, progress, done];
+        columns.forEach(col=>{
+                const tasks = col.querySelectorAll(".task");
+                const count = col.querySelector(".right");
+                // the count is selected from that column which is being called through drop event listner of column being changed
 
-            count.innerText = tasks.length
+                // task data will have three properties todo pregres and done // col ki id todo, progress, done
+                tasksData[col.id] =Array.from(tasks).map(t=>{ 
+                    return { // return map function
+                        title: t.querySelector("h2").innerText, 
+                        desc: t.querySelector("p").innerText,
+                    }
+                })
+                // console.log(tasksData)
+
+                localStorage.setItem("tasks", JSON.stringify(tasksData));
+
+                count.innerText = tasks.length; 
         })
-
+         
 
 
     })
@@ -168,11 +185,11 @@ addTaskButton.addEventListener("click", ()=>{
 
     // alert("button working")
 
-    const taskTItle = document.querySelector("#task-title-input").value
+    const taskTitle = document.querySelector("#task-title-input").value
     const taskDesc = document.querySelector("#task-desc-input").value
 
     // const template = `<div draggable="true" class="task">
-    //                 <h2>${taskTItle}</h2>
+    //                 <h2>${taskTitle}</h2>
     //                 <p>${taskDesc}</p>
     //                 <button>Delete</button>
     //             </div>`
@@ -183,7 +200,7 @@ addTaskButton.addEventListener("click", ()=>{
     div.setAttribute("draggable","true")
     
     div.innerHTML = `
-        <h2>${taskTItle}</h2>
+        <h2>${taskTitle}</h2>
         <p>${taskDesc}</p>
         <button>Delete</button>
     `;
