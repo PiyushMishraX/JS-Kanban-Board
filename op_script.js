@@ -24,6 +24,13 @@ function addTask(title,desc,column){
                 dragElement = div;
             })
 
+            //delete button
+            const deleteButton = div.querySelector("button");
+            deleteButton.addEventListener("click", ()=>{
+                div.remove();
+                updateTaskCount(); // and with update count their is no need to update local storage bcs it already has local storage updating feature in it
+            })
+
             return div;
 }
 
