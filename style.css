@@ -155,7 +155,12 @@ section .task-column .task button{
     align-items: center;
     justify-content: center;
 }
+/* when their is active class with modal class */
+/* <div class="class1 class2">This element matches .class1.class2</div>    */
 
+.modal.active{ 
+    display: flex;
+}
 .modal .bg{
     position: absolute;
     height: 100%;
