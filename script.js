@@ -75,6 +75,9 @@ function addDragEventsOnColuumn(column){
 
         console.log("Dropped", dragElement, column); // kisko drag kiya , kispe drop kiya
 
+        column.appendChild(dragElement);
+        column.classList.remove("hover-over");
+
 
 
     })
