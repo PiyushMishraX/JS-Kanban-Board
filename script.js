@@ -1,3 +1,5 @@
+let tasksData = {}
+
 const todo = document.querySelector("#todo");
 const progress = document.querySelector("#progress");
 const done = document.querySelector("#done");
@@ -75,7 +77,7 @@ function addDragEventsOnColumn(column){
         e.preventDefault();
         // console.log("Dropped", e);
 
-        console.log("Dropped", dragElement, column); // kisko drag kiya , kispe drop kiya
+        // console.log("Dropped", dragElement, column); // kisko drag kiya , kispe drop kiya
 
         column.appendChild(dragElement);
         column.classList.remove("hover-over");
@@ -143,12 +145,23 @@ addTaskButton.addEventListener("click", ()=>{
 
     todo.appendChild(div);// new task drag ebent listenre mai nahi hai
 
-    [todo, progress, done].forEach(col=>{
+    const columns = [todo, progress, done];
+    columns.forEach(col=>{
             const tasks = col.querySelectorAll(".task");
             const count = col.querySelector(".right");
             // the count is selected from that column which is being called through drop event listner of column being changed
+
+            // task data will have three properties todo pregres and done // col ki id todo, progress, done
+            tasksData[col.id] =Array.from(tasks).map(t=>{ 
+                return { // return map function
+                    title: t.querySelector("h2").innerText, 
+                    desc: t.querySelector("p").innerText,
+                }
+            })
+            console.log(tasksData)
+
             count.innerText = tasks.length; 
-        })
+    })
 
     div.addEventListener("drag",(e)=>{
         dragElement = div;
