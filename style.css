@@ -150,15 +150,19 @@ section .task-column .task button{
     width: 100vw;
     top: 0;
     left: 0;
-    display: flex;
+    display: none;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
 }
 
+
+
 .modal .center{
     background-color: var(--bg-button-color);
     padding: var(--padding-xxl);
-    border-radius: var(--boder-radius-s);
+    /* border-radius: var(--border-radius-s); */
+    border-radius: var(--border-radius-m);
     display: flex;
     flex-direction: column;
     gap: var(--padding-m);
@@ -171,15 +175,17 @@ section .task-column .task button{
     outline: none;
     color: var(--primary-text-color);
     padding: var(--padding-m);
-    border-radius: var(--boder-radius-s);
+    border-radius: var(--border-radius-s);
 }
 
 .modal .center button{
-    background-color: var(--bg-button-color);
+    background-color: var(--bg-task-color);
     border: none;
     outline: none;
     color: var(--primary-text-color);
     padding: var(--padding-m) var(--padding-l);
     cursor: pointer;
-    border-radius: var(--boder-radius-m);
+    border-radius: var(--border-radius-m);
+    width: fit-content;
+    align-self: center;
 }
