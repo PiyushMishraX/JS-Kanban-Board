@@ -9,10 +9,12 @@ let dragElement = null;
 
 const tasks = document.querySelectorAll('.task');
 
+// har task mai suru mai event listenre laga diya // new elements mai nahi hoga use creation time mai add karenge 
 tasks.forEach(task => {
     task.addEventListener("drag", (e)=>{ // dragging element
         // console.log("dragging ", e);
         dragElement = task; // find the element bring dragged
+        // dragElement is a global variable that stores the currently dragged task element during drag-and-drop operations. It's set in the drag event and used in the drop event to move the task to the new column via column.appendChild(dragElement). This tracks which item is being dragged across the board. // it helps to rememebr which elemetn is being dropped and dragged so a particular operation happens to that specific element only
     })
 });
 
@@ -96,13 +98,26 @@ addDragEventsOnColuumn(done);
 const toggleModalButton = document.querySelector("#toggle-modal");
 const modal = document.querySelector(".modal");
 const modalBg = document.querySelector(".modal .bg");
+const addTaskButton = document.querySelector("#add-new-task");
 
 toggleModalButton.addEventListener("click",() =>{
     modal.classList.toggle("active"); // if their is active class then remove else adds active class
 } )
 
 modalBg.addEventListener("click", ()=>{
-    modal.classList.remove("active");
+    modal.classList.remove("active"); // hide modal when we click bg // outside input box
 })
+
+addTaskButton.addEventListener("click", ()=>{
+
+    // alert("button working")
+
+    
+
+})
+
+
+
+
 
 /* modal related logic  */
