@@ -112,7 +112,32 @@ addTaskButton.addEventListener("click", ()=>{
 
     // alert("button working")
 
+    const taskTItle = document.querySelector("#task-title-input").value
+    const taskDesc = document.querySelector("#task-desc-input").value
+
+    // const template = `<div draggable="true" class="task">
+    //                 <h2>${taskTItle}</h2>
+    //                 <p>${taskDesc}</p>
+    //                 <button>Delete</button>
+    //             </div>`
+
+    const div = document.createElement("div");
+
+    div.classList.add("task")
+    div.setAttribute("draggable","true")
     
+    div.innerHTML = `
+        <h2>${taskTItle}</h2>
+        <p>${taskDesc}</p>
+        <button>Delete</button>
+    `;
+
+    todo.appendChild(div);// new task drag ebent listenre mai nahi hai
+
+    
+
+
+    modal.classList.remove("active"); 
 
 })
 
