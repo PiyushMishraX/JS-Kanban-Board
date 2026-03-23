@@ -156,7 +156,13 @@ section .task-column .task button{
     justify-content: center;
 }
 
-
+.modal .bg{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(61, 61, 61, 0.404);
+    backdrop-filter: blur(5px);
+}
 
 .modal .center{
     background-color: var(--bg-button-color);
