@@ -158,7 +158,9 @@ addTaskButton.addEventListener("click", ()=>{
                     desc: t.querySelector("p").innerText,
                 }
             })
-            console.log(tasksData)
+            // console.log(tasksData)
+
+            localStorage.setItem("tasks", JSON.stringify(tasksData));
 
             count.innerText = tasks.length; 
     })
